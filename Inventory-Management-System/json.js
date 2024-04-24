@@ -1,48 +1,48 @@
 const inventoryData = {
-  "inventory": {
-    "products": [
+  inventory: {
+    Products: [
       {
-        "name": "Product1",
-        "id": "001",
-        "price": 10.99,
-        "expirydate": "2024-12-31",
-        "quantity": 50,
-        "category": "Category1",
-        "supplier": "Supplier1"
+        name: "Fogg",
+        id: "1",
+        price: 200,
+        expirydate: "23-01-2025",
+        quantity: 50,
+        category: "Perfume",
+        supplier: "Preeti",
       },
       {
-        "name": "Product2",
-        "id": "002",
-        "price": 15.49,
-        "expirydate": "2024-11-30",
-        "quantity": 30,
-        "category": "Category2",
-        "supplier": "Supplier2"
-      }
+        name: "Happy Happy",
+        id: "2",
+        price: 20,
+        expirydate: "30-07-2024",
+        quantity: 30,
+        category: "Biscuit",
+        supplier: "Uma",
+      },
     ],
-    "categories": [
+    Categories: [
       {
-        "name": "Category1",
-        "subcategories": ["Subcategory1", "Subcategory2"]
+        name: "Biscuit",
+        subcategories: ["Happy Happy", "Moms Magic"],
       },
       {
-        "name": "Category2",
-        "subcategories": ["Subcategory3", "Subcategory4"]
-      }
+        name: "Footwear",
+        subcategories: ["Paragon", "VKC"],
+      },
     ],
-    "suppliers": [
+    Suppliers: [
       {
-        "name": "Supplier1",
-        "email": "supplier1@example.com",
-        "phno": "1234567890",
-        "productsSupplied": ["Product1", "Product3"]
+        name: "Verma",
+        email: "verma123@gmail.com",
+        phno: "6789054323",
+        productsSupplied: ["Mango", "Apple"],
       },
       {
-        "name": "Supplier2",
-        "email": "supplier2@example.com",
-        "phno": "9876543210",
-        "productsSupplied": ["Product2", "Product4"]
-      }
-    ]
-  }
-}
+        name: "Rutuja",
+        email: "rutuja452@gmail.com",
+        phno: "9876543210",
+        productsSupplied: ["Freedom refined oil", "Patanjali", "Sunflower"],
+      },
+    ],
+  },
+};
