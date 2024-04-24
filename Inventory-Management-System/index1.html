@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style1.css" />
+    <style>
+      .main-div {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .para,.product-container,.manage-div,
+      .succesfullyadded,#showmessage, 
+      .succesfullyadded-category {
+        display: none;
+      }
+      .caterogy-div,
+      .Supplier-div {
+        display: none;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+      <div class="first-div">
+        <div class="space"></div>
+        <h3 id="dashboard">Dashboard</h3>
+        <hr />
+        <div class="products-one">
+          <h3 onclick="subproducts()">
+            <i class="fa-brands fa-product-hunt"></i> Products
+          </h3>
+          <button id="pone" class="para">Add product</button>
+          <button id="ptwo" class="para">Manage Product</button>
+        </div>
+        <h3 class="caterory-one" id="caterory-one" onclick="addCategory()">
+          <i class="fa-solid fa-layer-group"></i>Category
+        </h3>
+        <h3 class="supplier-one">
+          <i class="fa-solid fa-truck-field" onclick="Supplierinfo()"></i
+          >Supplier
+        </h3>
+      </div>
+      <div class="second-div">
+        <div class="space-one"></div>
+        <div class="Product-information">
+          <div class="product-container">
+            <h3 id="heading"><span>Adding</span> Products</h3>
+            <div class="name-div">
+              <label for="name">Name</label><br />
+              <input
+                type="text"
+                id="name"
+                class="form"
+                placeholder="Please enter name"
+              />
+              <div id="alert-message-one"></div>
+            </div>
+            <div class="product-id-div">
+              <label for="id" class="form-one">Id</label><br />
+              <input
+                type="number"
+                id="id"
+                class="form"
+                placeholder="Please enter Id "
+              />
+              <div id="alert-message-two"></div>
+            </div>
+            <div class="Product-price-div">
+              <label for="price" class="form-one">Price</label><br />
+              <input
+                type="number"
+                id="price"
+                class="form"
+                placeholder="Please enter Price"
+              />
+              <div id="alert-message-three"></div>
+            </div>
+            <div class="product-expdate-div">
+              <label for="expirydate" class="form-one">Expiry Date</label><br />
+              <input
+                type="date"
+                id="expirydate"
+                class="form"
+                placeholder="Please enter Expirydate "
+              />
+              <div id="alert-message-four"></div>
+            </div>
+            <div class="product-qantity-div">
+              <label for="quantity" class="form-one">Quantity</label><br />
+              <input
+                type="number"
+                id="quantity"
+                class="form"
+                placeholder="Please enter quantity "
+              />
+              <div id="alert-message-five"></div>
+            </div>
+            <div class="product-category-div">
+              <label for="category" class="form-one">Category</label><br />
+              <input
+                type="text"
+                id="category"
+                class="form"
+                placeholder="Please enter category "
+              />
+              <div id="alert-message-six"></div>
+            </div>
+            <div class="product-supplier-div">
+              <label for="supplier" class="form-one">Supplier</label><br />
+              <input
+                type="text"
+                id="supplier"
+                class="form"
+                placeholder="Please enter supplier name"
+              />
+              <div id="alert-message-six"></div>
+            </div>
+            <div class="div-container">
+              <div class="flex-btn-product">
+                <button id="btn-btn" onclick="addbook()">Add product</button>
+                <div id="changesbtn"></div>
+              </div>
+              <div id="makechanges"></div>
+              <div id="exist-message"></div>
+              <div class="succesfullyadded">
+                <i class="fa-solid fa-circle-check"></i>succesfully added to the
+                list
+              </div>
+            </div>
+          </div>
+
+          <div class="manage-div">
+            <h3 id="heading"><span>Manage</span> Products</h3>
+            <div class="flex-button-search">
+              <button id="btn-btn" onclick="openagain()">Add product</button>
+              <div class="container-search">
+                <label for="icon-search">Search : </label>
+                <div class="container-search-inside">
+                  <input type="text" placeholder="Search" id="inpword" />
+                  <i
+                    class="fa-solid fa-magnifying-glass"
+                    id="icon-search"
+                    onclick="searchProducts()"
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="table-container">
+              <table id="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Price</th>
+                    <th>Expirydate</th>
+                    <th>Quantity</th>
+                    <th>Catagory</th>
+                    <th>Supplier</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+              </table>
+              <div id="showmessage">
+                The product with that name is not available in the list
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="caterogy-div">
+          <h3 id="heading"><span>Adding</span> Products</h3>
+          <div class="Categories">
+            <label for="category-id" class="form-cat">Category</label><br />
+            <input
+              type="text"
+              id="category-id"
+              class="cat"
+              placeholder="Please ener category"
+            />
+            <div id="alert-message-six"></div>
+          </div>
+          <div class="subcategories">
+            <label for="subcategory" class="form-cat">Subcategory</label><br />
+            <input
+              type="text"
+              id="subcategory"
+              class="cat"
+              placeholder="Please enter subcategories "
+            />
+            <div id="alert-message-seven"></div>
+          </div>
+
+          <div class="div-container">
+            <button id="btn-btn" onclick="addCategory()">Add Category</button>
+            <div id="makechanges-category"></div>
+            <div id="exist-message-category"></div>
+            <div class="succesfullyadded-category succesfullyadded">
+              <i class="fa-solid fa-circle-check"></i>succesfully added category
+            </div>
+          </div>
+          <div id="changesbtn-category"></div>
+          <div class="table-data-category">
+            <h3 id="heading"><span>Manage </span>Categories</h3>
+            <div class="table-container">
+            <table id="table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>subcategory</th>
+                  <th>satus</th>
+                  <th>Action</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tablebody-two"></tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        <div class="Supplier-div">
+          <h3 id="heading"><span>Adding</span> Supplier</h3>
+          <div class="supplier-container">
+            <label for="suppliername" class="form-sup">Name</label><br />
+            <input
+              type="text"
+              id="suppliername"
+              class="sup"
+              placeholder="Please enter name"
+            />
+            <div id="alert-message-eleven"></div>
+          </div>
+          <div class="Email">
+            <label for="supplieremail" class="form-cat">Email</label><br />
+            <input
+              type="email"
+              id="supplieremail"
+              class="sup"
+              placeholder="Please enter email"
+            />
+            <div id="alert-message-eight"></div>
+          </div>
+          <div class="ph_no">
+            <label for="phno" class="form-cat">Phone Number</label><br />
+            <input
+              type="number"
+              id="phno"
+              class="sup"
+              placeholder="Please enter phone number"
+            />
+            <div id="alert-message-nine"></div>
+          </div>
+          <div class="listofproducts">
+            <label for="phno" class="form-cat">List of products</label><br />
+            <input
+              type="text"
+              id="listofproduct"
+              class="sup"
+              placeholder="Please enter list of products"
+            />
+            <div id="alert-message-ten"></div>
+          </div>
+          <div class="div-container">
+            <button id="btn-btn" onclick="addSupplier()">Add Supplier</button>
+          </div>
+          <div>
+            <div id="makechanges-supplier"></div>
+            <div id="exist-message-supplier"></div>
+            <div class="succesfullyadded-supplier succesfullyadded">
+              <i class="fa-solid fa-circle-check"></i>Successfully added
+              Supplier
+            </div>
+          </div>
+          <div id="changesbtn-supplier"></div>
+          <div class="table-data-supplier table-container">
+            <h3 id="heading"><span>Manage</span>Supplier</h3>
+
+            <table id="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>List of Products</th>
+                  <th>Action</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tablebody-three"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script1.js"></script>
+    <script src="script2.js"></script>
+    <script src="script3.js"></script>
+  </body>
+</html>

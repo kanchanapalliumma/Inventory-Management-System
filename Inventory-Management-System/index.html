@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        border: 0;
+        margin: 0;
+        max-width: 1440px;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-direction:column;  
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        min-width: 100vh;
+        margin: auto;
+      }
+
+      .login-page {
+        display: inline-block;
+        padding: 20px 40px;
+        border: 1px solid black;
+        background-color: rgb(179, 201, 201);
+        border-radius: 10px;
+        margin-left: -20px;
+      }
+      #password,
+      #email {
+        margin: 10px;
+        padding: 15px 10px 15px 15px;
+        width: 70vh;
+        font-size: 15px;
+      }
+      label{
+        font-size: 25px;
+        float: left;  
+        margin-left: 10px;
+      }
+      button {
+        padding: 8px 25px;
+        margin-top: 20px;
+        font-size: 20px;
+        background-color:rgb(78, 76, 76);
+        border: 1px solid rgb(136, 132, 132);
+        color:white;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .automessage{
+        text-align: left;
+      }
+      h1 {
+        font-size: 70px;
+        text-align: center;
+        color:blueviolet;
+        margin-bottom: 40px;
+        margin-top: 20px;
+      }
+      input{
+        border-radius: 6px;
+      }
+      .login-page{
+        width: 85vh;
+      }
+      #message{
+        padding-left: 13px;
+      }
+      body{
+        background-image: url(inventoryimage.jpg);
+        background-size: cover;
+        background-position:center;
+        background-repeat: no-repeat;
+        margin-top: 40px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- <h1>Inventory Management System</h1> -->
+    <div class="main-login-page">
+      <div class="login-page">
+        <div>
+          <label for="email">Email</label><br />
+          <input type="text" id="email" placeholder="Enter Mail" />
+          <div id="message" class="automessage"></div>
+        </div>
+        <div>
+          <label for="Password">Password</label><br />
+          <input type="password" id="password" placeholder="Enter Password" />
+          <div id="message-one" class="automessage"></div>
+        </div>
+        <button id="btn" onclick="login()">Login</button>
+      </div>
+    </div>
+
+    <script>
+      function login() {
+        EmailDisplay();
+        Password();
+      }
+function EmailDisplay() {
+  let inputvalue_three = document.getElementById("email").value.trim();
+  let displayMessage_three = document.getElementById("message");
+  displayMessage_three.style.padding="15px 2px 15px 13px"
+  let regex_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (inputvalue_three === "") {
+    displayMessage_three.innerHTML = "Please enter the Email";
+    return false;
+  } else {
+    displayMessage_three.innerHTML = "";
+    if (!inputvalue_three.match(regex_email)) {
+      displayMessage_three.innerHTML =
+        "Email must be a valid address,e.g.example@example.com";
+      return false;
+    } else {
+      displayMessage_three.innerHTML = "";
+      return true;
+    }
+  }
+}
+      function Password() {
+        let inputvalue_four = document.getElementById("password").value.trim();
+        let displayMessage_four = document.getElementById("message-one");
+        displayMessage_four.style.padding="20px 2px 20px 15px"
+        let regex_Password =
+          /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_]{6,20}$/;
+
+        if (inputvalue_four === "") {
+          displayMessage_four.innerHTML = "Please enter password";
+        } else {
+          if (
+            !inputvalue_four.match(regex_Password) ||
+            inputvalue_four < 8 ||
+            inputvalue_four > 20
+          ) {
+            displayMessage_four.innerHTML =
+              "Password must be alphanumeric,it have to include special characters,numbers.password must contain atleast 8 characters";
+          } else {
+            displayMessage_four.innerHTML = "";
+            window.location.href = "index1.html";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
