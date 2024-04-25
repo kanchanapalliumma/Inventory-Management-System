@@ -1,7 +1,6 @@
 
 
 let library = JSON.parse(localStorage.getItem("library")) || [];
-// let categories = JSON.parse(localStorage.getItem("categories")) || [];
 
 
 class Product{
@@ -57,11 +56,6 @@ function addbook() {
   displaybook()
 }
 
-const inventory = {
-  products: [],
-  categories: [],
-  suppliers: [],
-};
 
 
 function displaybook(books) {
@@ -183,9 +177,9 @@ function Edit(i) {
   buttonsave.setAttribute("id", "saveChangesButton");
   document.getElementById("changesbtn").appendChild(buttonsave);
 }
- document.getElementById("icon-search").addEventListener("click",function(e){
-    let buttontwo = document.getElementById("inpword").value.trim();
- })
+//  document.getElementById("icon-search").addEventListener("click",function(){
+//     let buttontwo = document.getElementById("inpword").value.trim();
+//  })
 
 
  function subproducts() {
@@ -229,14 +223,31 @@ function searchProducts() {
   const filtering = library.filter((product) =>
     product.name.toLowerCase().includes(searchText)
   );
+  if (searchText === "") {
+    document.getElementById("showmessage").style.display = "none";
+    document.getElementById("tablebody").innerHTML = "";
+  }
   if(filtering==""){
     document.getElementById("showmessage").style.display = "block";
-    displaybook(filtering);
+    displaybook(filtering);  
   }else{
     document.getElementById("showmessage").style.display="none";
     displaybook(filtering);
   }
 }
+
+function GetAllData(){
+  if (library.length > 0) {
+    document.getElementById("showmessage").style.display = "none";
+    displaybook(library);
+  } else {
+    document.getElementById("tablebody").innerHTML = "";
+    document.getElementById("showmessage").style.display = "block";
+    document.getElementById("showmessage").textContent =
+      "There is no data is available in the inventory";
+  }
+}
+
 let isProductFormVisible = false;
 let isCategoryVisible = false;
 let isSupplierVisible = false;
