@@ -227,7 +227,7 @@ function searchProducts() {
     document.getElementById("showmessage").style.display = "none";
     document.getElementById("tablebody").innerHTML = "";
   }
-  if(filtering==""){
+  else  if(filtering==""){
     document.getElementById("showmessage").style.display = "block";
     displaybook(filtering);  
   }else{
